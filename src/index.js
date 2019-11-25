@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+// import './index.css';
+import './../node_modules/bulma/bulma.sass';
+// import App from './App';
 import GoalForm from './components/GoalForm'
 import * as serviceWorker from './serviceWorker';
 

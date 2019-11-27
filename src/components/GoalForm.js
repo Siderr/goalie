@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react'
+import GoalPicker from './GoalPicker'
 import useForm from 'react-hook-form';
 
 const GoalForm = () => {
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => console.log(data);
     console.log(errors);
+
+
+
+
 
     useEffect(()=> {
         
@@ -29,15 +34,7 @@ const GoalForm = () => {
                             <textarea className="textarea" name="Description" placeholder="Insert some description text for your goal." ref={register({ min: 0, maxLength: 3000 })} />
                         </div>
                     </div>
-                    <div className="field">
-                        <label className="label">Origin</label>
-                        <div className="control">
-                            <div className="select">
-                                <select name="Origin" ref={register({ required: false })}>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                    <GoalPicker register={register}/>
                     <div className="field">
                         <div className="control">
                             <button className="button is-link">Submit</button>

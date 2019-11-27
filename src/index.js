@@ -4,9 +4,10 @@ import ReactDOM from 'react-dom';
 import './../node_modules/bulma/bulma.sass';
 // import App from './App';
 import GoalForm from './components/GoalForm'
+import GoalMap from './components/GoalMap'
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<GoalForm />, document.getElementById('root'));
+ReactDOM.render(<GoalMap />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

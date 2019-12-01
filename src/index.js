@@ -8,6 +8,7 @@ import GoalMap from './components/GoalMap'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<GoalMap />, document.getElementById('root'));
+// ReactDOM.render(<GoalForm />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

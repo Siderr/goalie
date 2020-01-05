@@ -1,38 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Goal from './Goal'
+import Modal from './Modal'
+import GoalForm from './GoalForm'
 import { useHttp } from '../hooks/http'
 
-const GoalMap = PROPS => {
+const GoalMap = props => {
 
     const [isLoading, fetchedData] = useHttp('http://localhost:3333/goals/theone', [])
     const goalData = fetchedData ? [fetchedData] : []
-    console.log(goalData, fetchedData)
+    const [isModalActive, toggleModal] = useState(true)
+    const [goal, setGoal] = useState({})
+    const [formFlag, setFormFlag] = useState('new')
+    const handleToggle = (goal) => {
+        setGoal(goal)
+        setFormFlag('subGoal')
+        toggleModal(!isModalActive)
+    }
 
-    let goal = [{
-        name: 'parent',
-        children: [
-            { name: 'sub' },
-            { name: 'sub' },
-            { name: 'sub' },
-        ]
-    }]
+    const handleEdit = (goal) => {
+        setGoal(goal)
+        setFormFlag('edit')
+        toggleModal(!isModalActive)
+    }
+
+    // const handleDelete = (goal) => {
+
+    // }
+
     //TODO: Getting content
     let content = <div>Trying to load data....</div>
 
-    if(!isLoading && goalData && goalData.length > 0){
-        console.log('Here:', fetchedData);
-        
+    if (!isLoading && goalData && goalData.length > 0) {
+
         content = (
-        <div className="section">
-        <Goal children={goalData}/>
-        </div>
+            <div className="section">
+                <Goal children={goalData} handleToggle={handleToggle} handleEdit={handleEdit} />
+                <Modal toggle={isModalActive}>
+                    <GoalForm {...goal} flag={formFlag}/>
+                </Modal>
+            </div>
         )
-        
+
     }
-    else if(!isLoading && goalData && goalData.length === 0) {
+    else if (!isLoading && goalData && goalData.length === 0) {
         content = <p>Something wrong happened.</p>
     }
-    
+
     return content
 }
 

@@ -11,7 +11,9 @@ const GoalPicker = props => {
             name: item.name
         })
         ) : []
-
+        let value = props.flag == 'subGoal' && props.id || '';
+        console.log(value);
+        
     let selectContent = <p>Loading Goals....</p>
 
     if (!isLoading && selectedOptions && selectedOptions.length > 0) {
@@ -20,7 +22,7 @@ const GoalPicker = props => {
                 <label className="label">Origin</label>
                 <div className="control">
                     <div className="select">
-                        <select name="Origin" ref={props.register({ required: false })}>
+                        <select name="Origin" value={value} ref={props.register({ required: false })}>
                             {selectedOptions.map((item) => (
                                 <option key={item.id} value={item.id}>{item.name}</option>
                             ))}

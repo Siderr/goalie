@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import './index.css';
+import './../node_modules/bulma-extensions/bulma-accordion/dist/css/bulma-accordion.min.css';
 import './../node_modules/bulma/bulma.sass';
 // import App from './App';
 import GoalForm from './components/GoalForm'
